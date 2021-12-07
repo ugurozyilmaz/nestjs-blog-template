@@ -1,6 +1,6 @@
 import { define } from 'typeorm-seeding';
 import * as Faker from 'faker';
-import { Blog } from '../../blogs/blog.entity';
+import { Blog } from '../../blogs/entities/blog.entity';
 
 function between(min, max) {
   return Math.floor(Math.random() * (max - min) + min);

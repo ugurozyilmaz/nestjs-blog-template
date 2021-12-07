@@ -7,9 +7,11 @@ import {
   ParsedRequest,
 } from '@nestjsx/crud';
 import { BlogsService } from './blogs.service';
-import { Blog } from './blog.entity';
+import { Blog } from './entities/blog.entity';
 import { BlogPaginationInterceptor } from './interceptors/blog.pagination.interceptor';
 import { BlogSingleInterceptor } from './interceptors/blog.single.interceptor';
+import { BlogCreateDto } from './dtos/blog.create.dto';
+import { BlogUpdateDto } from "./dtos/blog.update.dto";
 @Crud({
   model: {
     type: Blog,
@@ -31,6 +33,10 @@ import { BlogSingleInterceptor } from './interceptors/blog.single.interceptor';
   query: {
     maxLimit: 10,
     alwaysPaginate: true,
+  },
+  dto: {
+    create: BlogCreateDto,
+    update: BlogUpdateDto,
   },
 })
 @Controller('blogs')

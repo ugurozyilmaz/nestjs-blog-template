@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Blog } from './blog.entity';
+import { Blog } from './entities/blog.entity';
 import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { InjectQueue } from '@nestjs/bull';

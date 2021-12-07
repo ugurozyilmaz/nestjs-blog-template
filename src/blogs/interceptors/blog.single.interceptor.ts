@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import blogResponseSerializer from './blog-response.serializer';
 
 export interface Response<T> {
   data: T;
@@ -21,7 +22,7 @@ export class BlogSingleInterceptor<T>
   ): Observable<Response<T>> {
     return next.handle().pipe(
       map((data) => {
-        data.image = `${process.env.BACKEND_DOMAIN}/${data.image}`;
+        data = blogResponseSerializer(data);
         return data;
       }),
     );
