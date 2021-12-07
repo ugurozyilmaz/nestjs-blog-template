@@ -25,9 +25,9 @@ export class Blog extends BaseEntity {
   @Column({ type: 'varchar' })
   short_content: string;
 
-  @Column({ type: 'date', default: Date.now })
+  @Column({ type: 'timestamp' })
   created_date: Date;
 
-  @Column({ type: 'date', default: Date.now })
+  @Column({ type: 'timestamp' })
   updated_date: Date;
 }
