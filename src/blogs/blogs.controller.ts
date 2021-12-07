@@ -1,5 +1,11 @@
-import { Controller } from '@nestjs/common';
-import { Crud, CrudController } from '@nestjsx/crud';
+import { Controller, Param } from '@nestjs/common';
+import {
+  Crud,
+  CrudController,
+  CrudRequest,
+  Override,
+  ParsedRequest,
+} from '@nestjsx/crud';
 import { BlogsService } from './blogs.service';
 import { Blog } from './blog.entity';
 import { BlogPaginationInterceptor } from './interceptors/blog.pagination.interceptor';
@@ -33,5 +39,11 @@ export class BlogsController implements CrudController<Blog> {
 
   get base(): CrudController<Blog> {
     return this;
+  }
+
+  @Override('getOneBase')
+  getOneAndDoStuff(@ParsedRequest() req: CrudRequest, @Param('id') id: string) {
+    this.service.addCounter(id);
+    return this.base.getOneBase(req);
   }
 }

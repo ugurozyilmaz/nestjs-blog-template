@@ -25,6 +25,9 @@ export class Blog extends BaseEntity {
   @Column({ type: 'varchar' })
   short_content: string;
 
+  @Column({ type: 'integer' })
+  view_count: number;
+
   @Column({ type: 'timestamp' })
   created_date: Date;
 

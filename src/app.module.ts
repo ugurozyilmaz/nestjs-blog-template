@@ -7,6 +7,7 @@ import appConfig from './config/app.config';
 import databaseConfig from './config/database.config';
 import { TypeOrmConfigService } from './database/typeorm.config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BullModule } from '@nestjs/bull';
 
 @Module({
   imports: [
@@ -17,6 +18,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     }),
     TypeOrmModule.forRootAsync({
       useClass: TypeOrmConfigService,
+    }),
+    BullModule.forRoot({
+      redis: {
+        host: 'redis',
+        port: 6379,
+      },
     }),
     BlogsModule,
   ],
